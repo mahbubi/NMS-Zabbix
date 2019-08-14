@@ -4,12 +4,13 @@ Step-Step:
 ```
 Enabling MIB files
 On RedHat-based systems the mib files should be enabled by default. On Debian-based systems you have to edit file /etc/snmp/snmp.conf and comment out the line that says mibs :
-{
+
+```
 # As the snmp packages come without MIB files due to license reasons, loading
 # of MIBs is disabled by default. If you added the MIBs you can reenable
 # loading them by commenting out the following line.
 #mibs :
-}
+```
 
 Testing MIB files
 Testing snmp MIBs can be done using snmpwalk utility. If you don't have it installed, use the following instructions.
