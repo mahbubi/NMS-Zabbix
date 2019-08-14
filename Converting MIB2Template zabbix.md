@@ -27,11 +27,14 @@ Used options:
 Using custom MIB files
 There are standard MIB files coming with every GNU/Linux distribution. But some device vendors provide their own.
 ```
-# mkdir -p /usr/local/share/snmp/mibs
-# grep -q '^mibdirs +/usr/local/share/snmp/mibs' /etc/snmp/snmp.conf 2>/dev/null || echo "mibdirs +/usr/local/share/snmp/mibs" >> /etc/snmp/snmp.conf
-# cp /path/to/file.mib /usr/local/share/snmp/mibs/file.mib
-restart daemon snmp
+# cp /path/to/file.mib /usr/share/snmp/mibs/file.mib
+# service snmp restart
+```
+to search OID root
+```
 # snmptranslate -m Name module -Tz | egrep '"1\.3\.6\.1\.4\.1\.[0-9]+"'
+or
+# snmptranslate -m /usr/share/snmp/mibs/file.mib -Tz | egrep '"1\.3\.6\.1\.4\.1\.[0-9]+"'
 ```
 install perl
 ```
@@ -45,11 +48,14 @@ install prerequisites on Ubuntu:
 ```
 # apt-get install perl libxml-simple-perl libsnmp-perl
 ```
-install any required perl module 
+install any required perl module
+change permission
 ```
 # chmod +x ~/bin/mib2template.pl
 ```
 command to run script
 ```
 # ./mib2template.pl --module NAME_MODULE --root 1.3.6.1.4.1.12356 --group template > mibForti.xml
+or
+./mib2template.pl --module /usr/share/snmp/mibs/file.mib --root 1.3.6.1.4.1.12356 --group template > mibForti.xml
 ```
