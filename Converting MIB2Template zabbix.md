@@ -47,9 +47,9 @@ link : https://github.com/Akint/mib2template/blob/master/mib2template.pl
 install prerequisites on Ubuntu: 
 ```
 # apt-get install perl libxml-simple-perl libsnmp-perl
+and install any required perl module
 ```
-install any required perl module
-change permission
+to change permission
 ```
 # chmod +x ~/bin/mib2template.pl
 ```
